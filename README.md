@@ -10,6 +10,28 @@ MP4, a transparent ProRes or WebM, or a PNG sequence. A desktop app built with E
 The TAG look is inspired by the work of typowow and the SHRED look by the work of Yossip. CUTOUT is an independent
 project and shares no code with them.
 
+![CUTOUT](docs/screenshot.jpg)
+
+<!-- videos:start -->
+## See it in action
+
+<p align="center"><a href="docs/videos/tutorial.mp4"><img src="docs/videos/tutorial.jpg" alt="How it works" width="640"></a><br><b>▶ <a href="docs/videos/tutorial.mp4">How it works</a></b> (0:58, with captions)</p>
+
+**Made with CUTOUT, from a free Pexels clip and public-domain paintings (The Met)**
+
+<table><tr>
+<td width="33%" align="center"><a href="docs/videos/examples/dancer-tag.mp4"><img src="docs/videos/examples/dancer-tag.gif" alt="TAG · Neon lime"></a><br><a href="docs/videos/examples/dancer-tag.mp4">TAG · Neon lime</a></td>
+<td width="33%" align="center"><a href="docs/videos/examples/dancer-sticker.mp4"><img src="docs/videos/examples/dancer-sticker.gif" alt="STICKER · Red star"></a><br><a href="docs/videos/examples/dancer-sticker.mp4">STICKER · Red star</a></td>
+<td width="33%" align="center"><a href="docs/videos/examples/dancer-fill.mp4"><img src="docs/videos/examples/dancer-fill.gif" alt="FILL · Met portraits"></a><br><a href="docs/videos/examples/dancer-fill.mp4">FILL · Met portraits</a></td>
+</tr><tr>
+<td width="33%" align="center"><a href="docs/videos/examples/portrait-shred.mp4"><img src="docs/videos/examples/portrait-shred.gif" alt="SHRED · Charcoal (photo)"></a><br><a href="docs/videos/examples/portrait-shred.mp4">SHRED · Charcoal (photo)</a></td>
+<td width="33%" align="center"><a href="docs/videos/examples/dancer-cut-paper.mp4"><img src="docs/videos/examples/dancer-cut-paper.gif" alt="CUT · Paper cut"></a><br><a href="docs/videos/examples/dancer-cut-paper.mp4">CUT · Paper cut</a></td>
+<td width="33%" align="center"><a href="docs/videos/examples/dancer-blueprint.mp4"><img src="docs/videos/examples/dancer-blueprint.gif" alt="TAG · Blueprint"></a><br><a href="docs/videos/examples/dancer-blueprint.mp4">TAG · Blueprint</a></td>
+</tr></table>
+
+Click any picture to play the video. Example sources: "A Woman Dancing Gracefully" by [Pavel Danilyuk](https://www.pexels.com/video/a-woman-dancing-gracefully-6939968/) (Pexels licence), and public-domain paintings from The Met (CC0): *Portrait of a Man* by [Velázquez](https://www.metmuseum.org/art/collection/search/437874) (SHRED), *Portrait of a Young Man* by [Antonello da Messina](https://www.metmuseum.org/art/collection/search/435581) (in the tutorial), and, inside FILL, portraits by [Biagio d'Antonio](https://www.metmuseum.org/art/collection/search/435664), [Jacometto](https://www.metmuseum.org/art/collection/search/436769), [Cosmè Tura](https://www.metmuseum.org/art/collection/search/437851), [Giovanni di Francesco](https://www.metmuseum.org/art/collection/search/437859), [the Master of the Castello Nativity](https://www.metmuseum.org/art/collection/search/437000), [Corneille de Lyon](https://www.metmuseum.org/art/collection/search/435951), [Sébastien Bourdon](https://www.metmuseum.org/art/collection/search/435757) and [Hugo van der Goes](https://www.metmuseum.org/art/collection/search/436521).
+<!-- videos:end -->
+
 ## Install
 
 You need:
@@ -183,6 +205,19 @@ node_modules\electron\dist\electron.exe .
   [Ultralytics YOLO](https://github.com/ultralytics/ultralytics) (AGPL-3.0), [PyTorch](https://pytorch.org/) and
   [OpenCV](https://opencv.org/).
 - The vision worker and the exact video seeking are shared with Glitch Chain, another app by the same author.
+- Examples and tutorial video in `docs/`: made with CUTOUT from "A Woman Dancing Gracefully" by
+  [Pavel Danilyuk](https://www.pexels.com/video/a-woman-dancing-gracefully-6939968/) (Pexels licence), and
+  public-domain paintings from The Met (CC0): *Portrait of a Man* by
+  [Velázquez](https://www.metmuseum.org/art/collection/search/437874) (SHRED), *Portrait of a Young Man* by
+  [Antonello da Messina](https://www.metmuseum.org/art/collection/search/435581) (in the tutorial), and, inside FILL,
+  portraits by [Biagio d'Antonio](https://www.metmuseum.org/art/collection/search/435664),
+  [Jacometto](https://www.metmuseum.org/art/collection/search/436769),
+  [Cosmè Tura](https://www.metmuseum.org/art/collection/search/437851),
+  [Giovanni di Francesco](https://www.metmuseum.org/art/collection/search/437859),
+  [the Master of the Castello Nativity](https://www.metmuseum.org/art/collection/search/437000),
+  [Corneille de Lyon](https://www.metmuseum.org/art/collection/search/435951),
+  [Sébastien Bourdon](https://www.metmuseum.org/art/collection/search/435757) and
+  [Hugo van der Goes](https://www.metmuseum.org/art/collection/search/436521).
 
 ## Licence
 
