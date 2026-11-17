@@ -1,0 +1,8 @@
+# Optional: only the HQ matte (tools/hq_matte.py) needs Python. The app itself runs without it.
+# Install PyTorch first (the CUDA build, for an NVIDIA GPU): https://pytorch.org/get-started/locally/
+torch
+transparent-background
+ultralytics
+opencv-python
+numpy
+pillow

@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CUTOUT</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; media-src 'self' blob:; font-src 'self' data:; connect-src 'self' blob: data:"
+    />
+  </head>
+  <body>
+    <div id="app">
+      <header id="top">
+        <div class="logo" aria-label="CUTOUT">
+          <span class="l1">C</span><span class="l2">U</span><span class="l3">T</span><span class="l4">O</span><span class="l5">U</span><span class="l6">T</span>
+        </div>
+        <button id="open" class="btn" title="Open video or image (Ctrl+O)">Open</button>
+        <div id="srcname" class="srcname"></div>
+        <nav id="tabs"></nav>
+        <div class="spacer"></div>
+        <button id="alpha" class="btn ghost alpha" title="Transparent background (T)"><span class="chk"></span>Transparent BG</button>
+        <button id="snap" class="btn ghost" title="Save this frame as PNG (keeps transparency)">Frame PNG</button>
+        <button id="export" class="btn primary" title="Export video (Ctrl+E)">Export</button>
+      </header>
+
+      <main id="viewer">
+        <canvas id="view"></canvas>
+        <div id="empty">
+          <div class="ransom">
+            <span class="r a">DROP</span><span class="r b">A</span><span class="r c">VIDEO</span>
+          </div>
+          <p>or an image · people and objects are cut out automatically</p>
+          <div class="looks">
+            <div><b style="--c: #d4f23a">TAG</b>flat-color people, boiling outline, A/B labels</div>
+            <div><b style="--c: #e8202a">STICKER</b>B&amp;W cut-out, white border, marker, kinetic type</div>
+            <div><b style="--c: #9b6bff">FILL</b>silhouette filled with a new picture every beat</div>
+            <div><b style="--c: #d9d4c7">SHRED</b>portrait torn into strips, tape, ink, charcoal</div>
+            <div class="wide"><b style="--c: #7ee0ff">CUT</b>remove the background: transparent PNG / ProRes / WebM, or swap it for a color, blur or paper</div>
+          </div>
+          <button id="open2" class="btn primary big">Open a file</button>
+        </div>
+        <div id="dropzone"><span>Drop to cut it out</span></div>
+        <div id="toast" hidden>
+          <span id="toast-text"></span>
+          <div id="toast-bar"><i></i></div>
+        </div>
+        <div id="badge"></div>
+      </main>
+
+      <aside id="panel">
+        <div class="row dice">
+          <button id="rand" class="btn small primary" title="Roll a fresh random look (R)">🎲 Randomize</button>
+          <button id="vary" class="btn small" title="Small variation of the current settings, e.g. on top of a preset (V)">✦ Vary</button>
+          <button id="undo" class="btn small ghost" title="Undo (Ctrl+Z)" disabled>↶ Undo</button>
+        </div>
+        <div class="row presets">
+          <select id="preset"></select>
+          <button id="preset-save" class="btn small" title="Save current settings as a preset">Save</button>
+          <button id="reset" class="btn small ghost" title="Reset this look">Reset</button>
+        </div>
+        <div class="row save-row" id="save-row" hidden>
+          <input id="preset-name" placeholder="Preset name" />
+          <button id="preset-ok" class="btn small primary">OK</button>
+        </div>
+        <div id="captions-box" hidden>
+          <label for="captions">Captions</label>
+          <textarea id="captions" rows="4" spellcheck="false"></textarea>
+          <small>One caption per line · <code>*word*</code> = hero word · <code>0-2.5: text</code> sets timing</small>
+        </div>
+        <div id="pane"></div>
+      </aside>
+
+      <footer id="transport">
+        <button id="play" class="icon" title="Play / pause (Space)">▶</button>
+        <span id="time">0:00.0</span>
+        <input id="scrub" type="range" min="0" max="1000" value="0" />
+        <span id="dur">0:00.0</span>
+        <button id="mute" class="icon small" title="Mute preview">🔊</button>
+        <button id="before" class="btn small ghost" title="Hold B to compare with the original">Before</button>
+      </footer>
+    </div>
+
+    <div id="modal" hidden>
+      <div class="card">
+        <h2>Export</h2>
+        <label>Format
+          <select id="x-codec">
+            <option value="h264">MP4 · H.264</option>
+            <option value="prores4444">MOV · ProRes 4444 + alpha</option>
+            <option value="webm">WebM · VP9 + alpha</option>
+            <option value="png">PNG sequence + alpha</option>
+          </select>
+        </label>
+        <label>Size (long side)
+          <select id="x-long">
+            <option value="1280">1280</option>
+            <option value="1920" selected>1920</option>
+            <option value="2560">2560</option>
+            <option value="3840">3840</option>
+          </select>
+        </label>
+        <label>Frame rate
+          <select id="x-fps">
+            <option value="source">source</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="30">30</option>
+            <option value="60">60</option>
+          </select>
+        </label>
+        <label>Length (seconds, empty = all)
+          <input id="x-seconds" type="number" min="0.5" step="0.5" placeholder="all" />
+        </label>
+        <div id="x-alpha" class="alpha-note"></div>
+        <div id="x-info" class="info"></div>
+        <div id="x-progress" hidden>
+          <div class="bar"><i></i></div>
+          <span id="x-status"></span>
+        </div>
+        <div class="actions">
+          <button id="x-cancel" class="btn ghost">Cancel</button>
+          <button id="x-go" class="btn primary">Render</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+{
+  "name": "cutout",
+  "productName": "CUTOUT",
+  "version": "0.1.0",
+  "description": "Mixed-media cutout video studio: TAG, STICKER, FILL, SHRED and CUT.",
+  "main": "./out/main/index.js",
+  "author": "Mario Schebly",
+  "license": "MIT",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "electron-vite build",
+    "start": "electron-vite preview",
+    "typecheck": "tsc --noEmit",
+    "icon": "python build/make-icon.py",
+    "build:win": "electron-vite build && electron-builder --win dir",
+    "postinstall": "install-electron --no"
+  },
+  "build": {
+    "appId": "com.mariobilly.cutout",
+    "productName": "CUTOUT",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "out/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "tools",
+        "to": "tools",
+        "filter": [
+          "*.py"
+        ]
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/ffmpeg-static/**"
+    ],
+    "win": {
+      "target": [
+        "dir"
+      ],
+      "icon": "build/icon.ico"
+    }
+  },
+  "dependencies": {
+    "@fontsource/archivo-black": "^5.2.0",
+    "@fontsource/instrument-serif": "^5.2.0",
+    "@fontsource/inter": "^5.2.0",
+    "@mediapipe/tasks-vision": "^1.0.1",
+    "d3-contour": "^4.0.2",
+    "ffmpeg-static": "^5.3.0",
+    "simplify-js": "^1.2.4",
+    "tweakpane": "^4.0.5"
+  },
+  "devDependencies": {
+    "@tweakpane/core": "^2.0.5",
+    "@types/d3-contour": "^3.0.6",
+    "@types/node": "^26.6.3",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.15.3",
+    "electron-vite": "^5.0.0",
+    "typescript": "^7.0.2",
+    "vite": "^7.3.6"
+  }
+}
